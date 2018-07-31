@@ -1,0 +1,124 @@
+Exercises
+
+Create a file called basic_node_operations_answers.txt. Put the answers to numbers 1, 2 and 6 in the file. Submit bash.js, commands.js and basic_node_operations_answers.txt.
+
+Questions
+1. Run the commands sort, wc and uniq on the commands.js file. Explain how they work and what the output was.
+
+ sort commands.js
+
+Returns the file sorted alphabetically by line.  I'm not going to copy it here because it's long and it looks like I had a bunch of empty lines at the end :).  
+
+ wc commands.js
+
+Returns:
+      54     109    1130 commands.js
+That returns the number of lines (newline characters) word and byte counts for the file
+
+  uniq commands.js
+
+Returns the lines from the document, but removes any duplicate lines.  So in this example, the results would not have a lot of carriage return empty lines at the top like when I ran the sort command because the duplicated are removed.
+
+
+2. Using the pipe (|) connect at least two commands and run it on commands.js. Explain what the output was and why the specific data was outputted.
+
+sort commands.js | uniq
+
+This first sorts the document and then returns only the unique lines.  So in this case it will be sorted and all the duplicate lines removed, most noticeably in this case it is now sorted with only 1 blank line at the top.
+
+
+Programming Questions
+3.  Implement the head command in the commands.js file. The head command outputs the first n lines of a file (you may decide what n is). This function will be similar to cat in structure so it will be helpful to reference.
+
+4. Implement the tail command in the commands.js file. The tail command is the inverse of the head command. It outputs the last n lines of a file (you may decide what n is).
+
+5. It is possible that a user will input a non-existent command to our bash shell. Within commands.js create an errorHandler function which will output an error message if the command cannot be found.
+
+Hint: Use the default: case in your switch statement.
+
+Answers to 3,4,5 are in my gitHub files.
+
+6. In this checkpoint, you encountered built-in JavaScript methods as well as the new ES6 syntax. Review the information below before attempting the programming challenge.
+
+Arrow Functions =>: An Alternative Way to Write Functions
+//For functions with one argument
+// ES5
+var value = variableName.functionName(function (element) {
+   return element.doSomething();
+});
+// ES6
+var value = variableName.functionName(element => element.doSomething());
+
+//For functions with multiple arguments or no arguments
+// ES5
+var value = variableName.functionName(function (a,b) {
+   return a + b;
+}, 0);
+// ES6
+var value = variableName.functionName((a, b) => a + b, 0);
+Reverse String
+
+Given a string, reverse the order of characters in each word within a sentence while maintaining the original word order and whitespace and return the string. To improve your problem-solving experience, use the suggested functions to solve the problem.
+
+Example
+Input: "I'm learning to program algorithms!"
+Output: "m'I gninrael ot margorp !smhtirogla"
+
+Hint: Look at the examples above to figure out how to refactor your forEach loop to use an arrow function.
+
+Concepts Arrow Function, JavaScript Functions
+
+Suggested Functions
+
+split()
+
+stringName.split(separator)
+Splits a string into an array of substrings, and returns the new array. The separator specifies how to split the string. If an empty string ('') is used as the separator (stringName.split('')) the string is split between each character. For example, 'Hello World'.split('') -> ['H','e','l','l','o', ' ', 'W', 'o', 'r', 'l', 'd']. If no separator is used, then the entire string will be returned as an array with one element. For example, 'Hello World'.split() -> ['Hello World']. Note that the split function does not change the original string so you must assign the result to a variable to keep the result.
+
+forEach()
+
+arrayName.forEach((currentItem) => {              
+//your iterator           
+})
+The forEach() method executes a provided function once for each array element.
+
+let arr = ['I', 'study', 'at', 'Bloc'];
+arr.forEach((element) => {
+ console.log(element);
+});
+// The above code would print, 'I', 'study', 'at', 'Bloc', to the console.
+push()
+
+arrayName.push(element)
+Adds new items to the end of an array and returns the new length.
+
+reverse()
+
+arrayName.reverse();
+Reverses an array in place. The first element of the array will become the last, and the last array element will become the first.
+
+join()
+
+arrayName.join(separator)
+Joins all elements of an array into a string. The separator specifies a string to separate each element of the array by. If omitted, the array elements are seperated with a comma (','). Note that the join function does not change the original array so you must assign the result to a variable to keep the result.
+
+let arr = ['Hello', 'World'];
+arr.join(); // 'Hello,World'
+arr.join(''); // 'HelloWorld'
+arr.join(' '); // 'Hello World'
+
+Starter Code
+
+input = "I'm learning to program algorithms!";
+
+function reverseWord(inputArray) {
+    reverseArray = [];
+    input.split(' ').forEach( currentItem => {
+        reverseArray.push( currentItem.split("").reverse().join("") );
+    });
+    return reverseArray.join(" ");
+}
+
+console.log(reverseWord(input));
+
+
